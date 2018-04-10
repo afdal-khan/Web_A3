@@ -1,7 +1,7 @@
-from django.urls import path
-from .views import index, RecordView
+from django.urls import url
+from . import views
 
 urlpatterns = [
-    path('', index),
-    path('records', RecordView.as_view())
+    url(r'^$', views.index),
+    url(r'^records/', views.RecordView)
 ]
