@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Update Anime</title>
+</head>
+<body>
+
+   <div class="container-fluid">
+        <div class="row">
+                <div class="col-md-6">
+                         <form method = "POST">
+                             {% csrf_token %}
+                            <h2>Update Anime Details </h2>
+                                <div class="form-row">
+                                  <div class="col-6">
+                                    <input type="text" class="form-control" id= "Name" placeholder="Name">
+                                    <input type="text" class="form-control" id= "Genre" placeholder="Genre">
+                                    <input type="text" class="form-control" id= "Type" placeholder="Type">
+                                    <input type="text" class="form-control" id="Episodes" placeholder="Episodes">
+                                    <input type="text" class="form-control" id= "Ratings"placeholder="Ratings">
+                                    <input type="text" class="form-control" id="Members" placeholder="Members">
+                                  </div>
+                                
+                                  
+            
+        
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                  
+            </div> 
+
+            <!-- <form>
+                    <h2>Update Anime Details</h2>
+                      <div class="col-6">
+                        <label for="disabledTextInput">Disabled input</label>
+                        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+                      </div>
+                      <div class="col-6">
+                        <label for="disabledSelect">Disabled select menu</label>
+                        <select id="disabledSelect" class="form-control">
+                          <option>Disabled select</option>
+                        </select>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
+                        <label class="form-check-label" for="disabledFieldsetCheck">
+                          Can't check this
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </fieldset>
+                  </form> -->
+                  
+            <div class="col-md-6">
+                        <h2>Current Anime Details</h2>
+                             
+                            <p> ID: {{ el.AID }}</p>
+                            <p> Name: {{el.Name }}</p>
+                            <p> Genre: {{ el.Genre }}</p>
+                            <p> Type: {{ el.Type }}</p>
+                            <p> Episodes: {{ el.Episodes }}</p>
+                            <p>Ratings: {{ el.Ratings }}</p>
+                            <p> Members: {{ el.Members }}</p>
+     
+                        
+            </div>
+                
+   </div>
+    
+</body>
+</html>
