@@ -1,7 +1,4 @@
-from django.forms import ModelForm
-from.models import uploadForm
+from django import forms
 
-class Upload(ModelForm):
-    class Meta:
-        model = uploadForm
-        exclude = ()
+class UploadForm (forms.Form):
+    file = forms.FileField()
