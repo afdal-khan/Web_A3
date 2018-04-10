@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from .animeModels import Anime
+from .forms import UploadForm
 
 
 
@@ -35,5 +36,46 @@ def update(request, anime_id):
     
     return render(request, 'update.html' )
 
-        
+def upload(request):
+    form = UploadForm()
 
+    if request.method == 'POST':
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_upload(request.FILES['file'])
+            return redirect('/')
+    else:
+        form = UploadForm()
+    
+    return render(request, 'upload.html', {'form': form})
+
+def handle_upload(f):
+    content = []
+    content = ParseFile.csvToDict(f)
+    for data in content:
+        o = Anime (
+            data['ID'],
+            data['Name'],
+            data['Genre'],
+            data['Type'],
+            data['Episodes'],
+            data['Ratings'],
+            data['Members']
+        )
+        o.save()
+
+# def  readAll():
+    #      listings= []
+    #      AnimeObj=[]
+    #      listings =ParseFile.csvToDict() 
+    #      counter = 1
+    #      for data in listings:
+    #          #print (data)
+    #          #put into anime objects
+             
+    #          current= Anime(data['ID'], data['Name'],data['Genre'],data['Type'],data['Episodes'],data['Ratings'],data['Members'])
+    #          current.save()
+    #          counter = counter + 1
+    #          print(current.Name)
+    #      print("DONE")
+    #      return listings
