@@ -23,4 +23,4 @@ class Anime(models.Model):
     Members= CharField(max_length=100)  
     
     def __str__(self):
-        return this.Name
+        return self.Name

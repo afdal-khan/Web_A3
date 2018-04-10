@@ -5,7 +5,8 @@ class ParseFile:
 
     def csvToDict():
         #read csv file
-        CSVFile= csv.DictReader(open("/home/adminuser/Downloads/AnimeProj/AnimeProj/AnimeApp/static/anime.csv","r"))
+        print(File)
+        CSVFile= csv.DictReader(open('/assets/data/anime.csv',"r"))
         listings= [] #empty array to store all 12000 records as one
         current ={}
 

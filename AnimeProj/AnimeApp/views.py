@@ -1,9 +1,14 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
 from .animeModels import Anime
 from .forms import UploadForm
+import csv
+from .animeModels.csv import ParseFile
+from django.core.files import File
+
+
 
 
 
@@ -42,6 +47,7 @@ def upload(request):
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
+            uploaded_file = request.FILES['file']
             handle_upload(request.FILES['file'])
             return redirect('/')
     else:
@@ -50,8 +56,14 @@ def upload(request):
     return render(request, 'upload.html', {'form': form})
 
 def handle_upload(f):
+
+    with open('/assets/data/anime.csv', 'w') as dest:
+        for chunk in f.chunks():
+            dest.write(chunk)
+
+
     content = []
-    content = ParseFile.csvToDict(f)
+    content = ParseFile.csvToDict()
     for data in content:
         o = Anime (
             data['ID'],
