@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render #, redirect
 from django.http import HttpResponse
 from django.views import View
 from .models import uploadForm
@@ -26,6 +26,7 @@ class RecordView(View):
         UForm = Upload(request.POST, request.FILES)
         if UForm.is_valid():
             UForm.save()
+            # return redirect('/')
             return HttpResponseRedirect("/?oper=cat&res=true")
         # Else request was invalid
         return render(request, 'add.html', {
