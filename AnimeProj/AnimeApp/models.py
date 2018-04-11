@@ -6,5 +6,6 @@ from django.db.models.signals import post_save
 # Create your models here.
 # from AppName.AppFolder import Classname
 from AnimeApp.animeModels import Anime
+from AnimeApp.animeModels import Document
 
 
